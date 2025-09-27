@@ -62,7 +62,14 @@ const Alerts = () => {
                 <span>{alert.location}</span>
               </div>
               <p>{alert.description}</p>
-              <Button variant="outline">View Details</Button>
+              <Button 
+                variant="outline"
+                onClick={() => {
+                  window.alert(`Detailed information for ${alert.title}:\n\nLocation: ${alert.location}\nSeverity: ${alert.severity}\nTime: ${alert.time}\n\nDescription: ${alert.description}\n\nStay safe and follow local emergency guidelines.`);
+                }}
+              >
+                View Details
+              </Button>
             </CardContent>
           </Card>
         ))}
@@ -79,7 +86,27 @@ const Alerts = () => {
           <p className="text-muted-foreground mb-4">
             Enable notifications to receive real-time disaster alerts for your area.
           </p>
-          <Button>Enable Notifications</Button>
+          <Button
+            onClick={() => {
+              if ("Notification" in window) {
+                Notification.requestPermission().then(permission => {
+                  if (permission === "granted") {
+                    new Notification("Disaster Alert Notifications Enabled!", {
+                      body: "You'll now receive real-time disaster alerts for your area.",
+                      icon: "/favicon.ico"
+                    });
+                    alert("✅ Notifications enabled! You'll receive real-time disaster alerts.");
+                  } else {
+                    alert("Please enable notifications in your browser settings to receive disaster alerts.");
+                  }
+                });
+              } else {
+                alert("Your browser doesn't support notifications.");
+              }
+            }}
+          >
+            Enable Notifications
+          </Button>
         </CardContent>
       </Card>
     </div>

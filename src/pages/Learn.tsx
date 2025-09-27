@@ -111,16 +111,15 @@ const Learn = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {disasterVideos.map((video, index) => (
             <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="rounded-full"
-                  onClick={() => window.open(video.videoUrl, '_blank')}
-                >
-                  <PlayCircle className="w-6 h-6 mr-2" />
-                  Watch Video
-                </Button>
+              <div className="aspect-video relative overflow-hidden rounded-lg">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${video.videoUrl.split('/').pop()?.split('?')[0]}?si=${video.videoUrl.includes('si=') ? video.videoUrl.split('si=')[1].split('&')[0] : ''}`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -179,7 +178,12 @@ const Learn = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">{module.description}</p>
-                <Button className="w-full">
+                <Button 
+                  className="w-full"
+                  onClick={() => {
+                    alert(`Starting ${module.title} - ${module.lessons} lessons, estimated duration: ${module.duration}`);
+                  }}
+                >
                   Start Learning
                 </Button>
               </CardContent>
@@ -198,9 +202,24 @@ const Learn = () => {
           Connect with other students and educators to share knowledge and practice emergency scenarios together.
         </p>
         <div className="flex flex-wrap gap-4">
-          <Button variant="outline">Find Study Groups</Button>
-          <Button variant="outline">Create New Group</Button>
-          <Button variant="outline">Schedule Practice Drill</Button>
+          <Button 
+            variant="outline"
+            onClick={() => alert("Study groups feature coming soon! Join our community to connect with other learners.")}
+          >
+            Find Study Groups
+          </Button>
+          <Button 
+            variant="outline"
+            onClick={() => alert("Create your own study group to practice with friends and classmates.")}
+          >
+            Create New Group
+          </Button>
+          <Button 
+            variant="outline"
+            onClick={() => window.location.href = '/drill'}
+          >
+            Schedule Practice Drill
+          </Button>
         </div>
       </section>
     </div>

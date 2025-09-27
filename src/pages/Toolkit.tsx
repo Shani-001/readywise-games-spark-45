@@ -46,7 +46,44 @@ const Toolkit = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">{tool.description}</p>
-                <Button className="w-full">{tool.action}</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => {
+                    const actions = {
+                      "Emergency Contact List": () => {
+                        const contacts = `📞 EMERGENCY CONTACTS 📞\n\n🚨 NATIONAL EMERGENCY: 112\n🚑 AMBULANCE: 108\n🚒 FIRE: 101\n👮 POLICE: 100\n🌊 DISASTER HELPLINE: 1078\n⛑️ WOMEN HELPLINE: 1091\n👶 CHILD HELPLINE: 1098\n\n📋 KEEP THIS LIST HANDY!`;
+                        alert(contacts);
+                        
+                        // Create downloadable file
+                        const blob = new Blob([contacts], { type: 'text/plain' });
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'emergency-contacts.txt';
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                      },
+                      "Evacuation Route Planner": () => {
+                        alert("🗺️ Evacuation Route Planner\n\n1. Identify all exit routes in your building\n2. Mark assembly points\n3. Plan alternative routes\n4. Practice regularly\n\nOpening interactive route planner...");
+                      },
+                      "Emergency Kit Checklist": () => {
+                        const checklist = `✅ EMERGENCY KIT CHECKLIST\n\n💧 WATER (3 days supply)\n🍞 FOOD (Non-perishable)\n🔦 FLASHLIGHT\n🔋 BATTERIES\n📻 RADIO\n💊 FIRST AID KIT\n💉 MEDICATIONS\n📄 IMPORTANT DOCUMENTS\n💰 CASH\n👕 CLOTHING\n🧻 HYGIENE ITEMS\n🔧 TOOLS\n📱 PHONE CHARGER\n🚨 WHISTLE\n🗂️ LOCAL MAPS`;
+                        alert(checklist);
+                        
+                        const blob = new Blob([checklist], { type: 'text/plain' });
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'emergency-kit-checklist.txt';
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                      }
+                    };
+                    actions[tool.title]?.() || alert(`${tool.action} functionality for ${tool.title}`);
+                  }}
+                >
+                  {tool.action}
+                </Button>
               </CardContent>
             </Card>
           );

@@ -206,7 +206,23 @@ const Games = () => {
                 </div>
 
                 {/* Action Button */}
-                <Button className="w-full" size="lg">
+                <Button 
+                  className="w-full" 
+                  size="lg"
+                  onClick={() => {
+                    const gameMessages = {
+                      "Crisis Command": "🎮 Loading Crisis Command... Get ready to make tough decisions as a disaster response leader!",
+                      "Escape the Disaster Zone": "🔥 Loading Escape the Disaster Zone... Navigate through dangerous scenarios and reach safety!",
+                      "Disaster Quiz Arena": "🧠 Loading Disaster Quiz Arena... Test your disaster preparedness knowledge!",
+                      "Rescue Ops Simulator": "👥 Loading Rescue Ops Simulator... Work with your team to save lives!"
+                    };
+                    alert(gameMessages[game.title] || "Game loading...");
+                    // Simulate game loading
+                    setTimeout(() => {
+                      alert(`${game.title} is ready! This is a demo version. Full games coming soon!`);
+                    }, 2000);
+                  }}
+                >
                   <PlayCircle className="w-5 h-5 mr-2" />
                   Start Game
                 </Button>

@@ -59,7 +59,14 @@ const Drill = () => {
                     <span>{drill.location}</span>
                   </div>
                 </div>
-                <Button className="w-full">Join Drill</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => {
+                    alert(`Joining ${drill.type} scheduled for ${drill.date}. You'll receive a notification before the drill starts.`);
+                  }}
+                >
+                  Join Drill
+                </Button>
               </div>
             ))}
           </CardContent>
@@ -73,7 +80,16 @@ const Drill = () => {
             <p className="text-muted-foreground mb-4">
               Coordinate with your school administration to schedule emergency drills.
             </p>
-            <Button className="w-full">Schedule Drill</Button>
+            <Button 
+              className="w-full"
+              onClick={() => {
+                const drillTypes = ["Fire Drill", "Earthquake Drill", "Flood Evacuation", "Lockdown Drill"];
+                const selectedType = drillTypes[Math.floor(Math.random() * drillTypes.length)];
+                alert(`Scheduling ${selectedType}. Please coordinate with your school administration for approval and timing.`);
+              }}
+            >
+              Schedule Drill
+            </Button>
           </CardContent>
         </Card>
       </div>
