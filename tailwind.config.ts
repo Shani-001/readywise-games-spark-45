@@ -47,6 +47,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        game: {
+          strategy: "hsl(var(--game-strategy))",
+          simulation: "hsl(var(--game-simulation))",
+          quiz: "hsl(var(--game-quiz))",
+          teamwork: "hsl(var(--game-teamwork))",
+        },
+        alert: {
+          high: "hsl(var(--alert-high))",
+          medium: "hsl(var(--alert-medium))",
+          low: "hsl(var(--alert-low))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

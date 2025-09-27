@@ -25,7 +25,7 @@ const Games = () => {
       players: "1 player",
       skills: ["Resource Management", "Decision Making", "Leadership", "Crisis Planning"],
       icon: Shield,
-      color: "from-blue-500 to-blue-600",
+      color: "bg-game-strategy",
       features: [
         "Real-time resource allocation",
         "Multiple disaster scenarios",
@@ -42,7 +42,7 @@ const Games = () => {
       players: "1 player",
       skills: ["Quick Thinking", "Survival Skills", "Route Planning", "Risk Assessment"],
       icon: Target,
-      color: "from-red-500 to-red-600",
+      color: "bg-game-simulation",
       features: [
         "Multiple disaster scenarios",
         "Time-pressure challenges",
@@ -59,7 +59,7 @@ const Games = () => {
       players: "1-8 players",
       skills: ["Knowledge Recall", "Quick Response", "Competitive Spirit", "Learning Retention"],
       icon: Brain,
-      color: "from-green-500 to-green-600",
+      color: "bg-game-quiz",
       features: [
         "Multiplayer competitions",
         "Power-ups and bonuses",
@@ -76,7 +76,7 @@ const Games = () => {
       players: "2-6 players",
       skills: ["Teamwork", "Communication", "Role Coordination", "Emergency Response"],
       icon: Users,
-      color: "from-purple-500 to-purple-600",
+      color: "bg-game-teamwork",
       features: [
         "Role-based gameplay",
         "Team coordination challenges",
@@ -138,8 +138,8 @@ const Games = () => {
           const IconComponent = game.icon;
           return (
             <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-              {/* Game Header with Gradient */}
-              <div className={`bg-gradient-to-r ${game.color} p-6 text-white relative overflow-hidden`}>
+              {/* Game Header with Solid Color */}
+              <div className={`${game.color} p-6 text-white relative overflow-hidden`}>
                 <div className="absolute top-0 right-0 opacity-20 transform rotate-12 translate-x-4 -translate-y-4">
                   <IconComponent className="w-24 h-24" />
                 </div>
@@ -150,7 +150,7 @@ const Games = () => {
                   </div>
                   <p className="text-white/90 mb-4">{game.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge className={getTypeColor(game.type).replace('text-', 'text-').replace('bg-', 'bg-white/20 text-white border-white/30')}>
+                    <Badge className="bg-white/20 text-white border-white/30">
                       {game.type}
                     </Badge>
                     <Badge className="bg-white/20 text-white border-white/30">
